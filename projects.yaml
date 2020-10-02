@@ -650,3 +650,7 @@ projects:
         - *module_if
         - *module_hic_lpc4322
         - records/board/hani_iot.yaml
+    pic32cxmtg_ek:
+        - *module_if
+        - *module_hic_pic32cxmtg
+        - records/board/pic32cxmtg_ek.yaml
