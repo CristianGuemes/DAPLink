@@ -22,12 +22,16 @@
 #include "target_family.h"
 #include "target_board.h"
 
+#define PIC32CXMTG_BOARD_ID       "0921"
+#define PIC32CXMTG_FAMILY_ID      kStub_HWReset_FamilyID  
+
 const board_info_t g_board_info = {
     .info_version = kBoardInfoVersion,
-    .board_id = "1056",
-    .family_id = kStub_HWReset_FamilyID,
+    .board_id = PIC32CXMTG_BOARD_ID,
+    .family_id = PIC32CXMTG_FAMILY_ID,
     .daplink_url_name =       "PRODINFOHTM",
-    .daplink_drive_name =       "LPC546XX",
-    .daplink_target_url = "https://os.mbed.com/platforms/LPCXpresso54608/",
+    .daplink_drive_name =       "PIC32CXMTG",
+    .daplink_target_url = "https://os.mbed.com/platforms/PIC32CXMTG-EK/",
     .target_cfg = &target_device,
+	.soft_reset_type = SYSRESETREQ,
 };

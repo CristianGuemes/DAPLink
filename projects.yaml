@@ -72,6 +72,9 @@ module:
     hic_m48ssidae: &module_hic_m48ssidae
         - records/rtos/rtos-cm4.yaml
         - records/hic_hal/m48ssidae.yaml
+    hic_pic32cxmtg: &module_hic_pic32cxmtg
+        - records/rtos/rtos-cm4.yaml
+        - records/hic_hal/pic32cxmtg.yaml
 
 projects:
     kl26z_bl:
@@ -650,7 +653,7 @@ projects:
         - *module_if
         - *module_hic_lpc4322
         - records/board/hani_iot.yaml
-    pic32cxmtg_ek:
+    pic32cxmtg_ek_if:
         - *module_if
         - *module_hic_pic32cxmtg
         - records/board/pic32cxmtg_ek.yaml

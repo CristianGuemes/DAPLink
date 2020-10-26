@@ -72,7 +72,7 @@ static uint8_t security_bits_set(uint32_t addr, uint8_t *data, uint32_t size)
 }
 
 const target_family_descriptor_t g_target_family = {
-    .family_id = myFamilyID,
+    .family_id = kMicrochip_PIC32CX_FamilyID,
     .default_reset_type = kSoftwareReset,
 	.soft_reset_type = SYSRESETREQ,
     .target_before_init_debug = target_before_init_debug,

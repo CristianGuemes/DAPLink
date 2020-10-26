@@ -58,7 +58,7 @@ PROJECT_RELEASE_INFO = {
     ("k20dx_mimxrt1050_evk_hyper_if",               True,       0x8000,     "bin"       ),
     ("k20dx_mimxrt1050_evk_qspi_if",                True,       0x8000,     "bin"       ),
     ('k20dx_ep_agora_if',                           True,      	0x0000,     "bin"       ),
-    ('k20dx_ep_kairos_if',                           True,       0x0000,     "bin"       ),
+    ('k20dx_ep_kairos_if',                          True,       0x0000,     "bin"       ),
     ("k26f_frdmk32w042_if",                         False,      0x8000,     "bin"       ),
     ("lpc11u35_archble_if",                         False,      0x0000,     "bin"       ),
     ("lpc11u35_archpro_if",                         False,      0x0000,     "bin"       ),
@@ -143,6 +143,7 @@ PROJECT_RELEASE_INFO = {
 # Add new HICs here
 VENDOR_ID = {
     'Stub': 0,
+    'Microchip': 3,
     'NXP': 11,
     'TI': 16,
     'Nordic': 54,
@@ -219,6 +220,7 @@ SUPPORTED_CONFIGURATIONS = [
     (   0x0816,     VENDOR_TO_FAMILY('Stub', 1),        'stm32f103xb_stm32f746zg_if',               'stm32f103xb_bl',   'ST-Nucleo-F746ZG'                      ),
     (   0x0824,     VENDOR_TO_FAMILY('Stub', 1),        'lpc11u35_lpc824xpresso_if',                None,               'LPCXpresso824-MAX'                     ),
     (   0x0835,     VENDOR_TO_FAMILY('Stub', 1),        'stm32f103xb_stm32f207zg_if',               'stm32f103xb_bl',   'ST-Nucleo-F207ZG'                      ),
+    (   0x0921,     VENDOR_TO_FAMILY('Microchip', 1),   'pic32cxmtg_ek_if',                         None,               None                                    ),
     (   0x1017,     VENDOR_TO_FAMILY('Nordic', 1),      'lpc11u35_hrm1017_if',                      None,               'mbed-HRM1017'                          ),
     (   0x1018,     VENDOR_TO_FAMILY('Stub', 1),        'lpc11u35_ssci824_if',                      None,               'Switch-Science-mbed-LPC824'            ),
     (   0x1019,     VENDOR_TO_FAMILY('Nordic', 1),      'lpc11u35_sscity_if',                       None,               'Switch-Science-mbed-TY51822r3'         ),

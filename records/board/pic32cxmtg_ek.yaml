@@ -4,3 +4,4 @@ common:
             - source/board/pic32cxmtg_ek.c
         family:
             - source/family/microchip/pic32cxmtg/target.c
+            - source/family/microchip/target_reset_pic32cx.c
