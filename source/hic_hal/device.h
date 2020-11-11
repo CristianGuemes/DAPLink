@@ -41,6 +41,8 @@
 #include "stm32f103xb.h"
 #elif defined (INTERFACE_M48SSIDAE)
 #include "M480.h"
+#elif defined (INTERFACE_PIC32CX)
+#include "pic32cx.h"
 #else
 #error "CMSIS core headers needed"
 #endif

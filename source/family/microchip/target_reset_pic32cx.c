@@ -19,7 +19,6 @@
  * limitations under the License.
  */
 
-#include "target_reset.h"
 #include "swd_host.h"
 #include "target_family.h"
 
@@ -34,6 +33,8 @@ typedef struct {
   uint32_t EEFC_WPMR;     /**< \brief (Sefc Offset: 0xE4) Write Protection Mode Register */
 } Sefc;
 
+#define EEFC_FSR_FRDY (0x1u << 0) /**< \brief (EEFC_FSR) Flash Ready Status (cleared when Flash is busy) */
+
 #define SEFC0        ((Sefc *)0x460E0000U) /**< \brief (SEFC0) Base Address */
 #define SEFC1        ((Sefc *)0x460E0200U) /**< \brief (SEFC1) Base Address */
 
@@ -43,7 +44,7 @@ static void target_before_init_debug(void)
     //	to the DAP across JTAG or SWD
 }
 
-static uint8_t target_set_state(TARGET_RESET_STATE state)
+static uint8_t target_set_state(target_state_t state)
 {
     // if a custom state machine is needed to set the TARGET_RESET_STATE state
     return 1;
@@ -71,11 +72,13 @@ static uint8_t security_bits_set(uint32_t addr, uint8_t *data, uint32_t size)
     return 0;
 }
 
-const target_family_descriptor_t g_target_family = {
+const target_family_descriptor_t g_pic32cx_family = {
     .family_id = kMicrochip_PIC32CX_FamilyID,
     .default_reset_type = kSoftwareReset,
-	.soft_reset_type = SYSRESETREQ,
+    .soft_reset_type = SYSRESETREQ,
     .target_before_init_debug = target_before_init_debug,
     .target_set_state = target_set_state,
     .security_bits_set = security_bits_set,
 };
+
+const target_family_descriptor_t *g_target_family = &g_pic32cx_family;

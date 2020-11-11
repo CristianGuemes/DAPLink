@@ -2,26 +2,41 @@ common:
     target:
         - PIC32CXMTG
     core:
-        - Cortex-M4
+        - Cortex-M4F
     macros:
-        - INTERFACE_LPC11U35
-        - DAPLINK_HIC_ID=0x97969902  # DAPLINK_HIC_ID_LPC11U35
-        - OS_CLOCK=48000000
+        - __PIC32CX2051MTG100__
+        - INTERFACE_PIC32CX
+        - DAPLINK_HIC_ID=0x97969922  # DAPLINK_HIC_ID_PIC32CX
+        - OS_CLOCK=100000000
     includes:
-        - source/hic_hal/nxp/lpc11u35
-        - source/hic_hal/nxp/lpc11u35
+        - source/hic_hal/microchip/pic32cx
+        - source/hic_hal/microchip/pic32cx/include
+        - source/hic_hal/microchip/pic32cx/include/component
+        - source/hic_hal/microchip/pic32cx/include/instance
+        - source/hic_hal/microchip/pic32cx/include/pio
     sources:
         hic_hal:
-            - source/hic_hal/nxp/lpc11u35
-            - source/hic_hal/nxp/lpc11u35/armcc
-            - source/hic_hal/nxp/lpc11u35
+            - source/hic_hal/microchip/pic32cx/
+            - source/hic_hal/microchip/pic32cx/armcc
 
 tool_specific:
     uvision:
         misc:
             ld_flags:
-                - --predefine="-I..\..\..\source\hic_hal\nxp\lpc11u35"
+                - --predefine="-I..\..\..\source\hic_hal\microchip\pic32cx"
+            c_flags:
+                - --no_unaligned_access
+            cxx_flags:
+                - --no_unaligned_access
+            asm_flags:
+                - --no_unaligned_access
     make_armcc:
         misc:
             ld_flags:
-                - --predefine="-Isource\hic_hal\nxp\lpc11u35"
+                - --predefine="-Isource\hic_hal\microchip\pic32cx"
+            c_flags:
+                - --no_unaligned_access
+            cxx_flags:
+                - --no_unaligned_access
+            asm_flags:
+                - --no_unaligned_access

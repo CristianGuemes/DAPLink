@@ -143,7 +143,9 @@ SVC_Handler_Veneer
 
         PUSH    {R2,R3}
         TST     LR,#0x10                ; is it extended frame?
+#ifdef __FPU_PRESENT
         VSTMDBEQ R12!,{S16-S31}         ; yes, stack also VFP hi-regs
+#endif				
         MOVEQ   R3,#0x03                ; os_tsk->ret_upd val
         MOVNE   R3,#0x01
 
@@ -161,7 +163,9 @@ SVC_Restore
         LDRB    R3,[R2,#TCB_RETUPD]     ; Update ret_val?
 
         TST     R3,#0x02                ; VFP Active?
+#ifdef __FPU_PRESENT
         VLDMIANE R12!,{S16-S31}         ; restore VFP hi-registers
+#endif
         MVNNE   LR,#:NOT:0xFFFFFFED     ; set EXC_RETURN value
         MVNEQ   LR,#:NOT:0xFFFFFFFD
         MSR     PSP,R12                 ; Write PSP
@@ -237,7 +241,9 @@ Sys_Switch
         PUSH    {R2,R3}
         MRS     R12,PSP                 ; Read PSP
         TST     LR,#0x10                ; is it extended frame?
+#ifdef __FPU_PRESENT
         VSTMDBEQ R12!,{S16-S31}         ; yes, stack also VFP hi-regs
+#endif
         MOVEQ   R3,#0x02                ; os_tsk->ret_upd val
         MOVNE   R3,#0x00
 
@@ -254,7 +260,9 @@ Sys_Switch
         LDRB    R3,[R2,#TCB_RETUPD]     ; Update ret_val?
 
         TST     R3,#0x02                ; VFP Active?
+#ifdef __FPU_PRESENT
         VLDMIANE R12!,{S16-S31}         ; restore VFP hi-regs
+#endif
         MVNNE   LR,#:NOT:0xFFFFFFED     ; set EXC_RETURN value
         MVNEQ   LR,#:NOT:0xFFFFFFFD
         MSR     PSP,R12                 ; Write PSP

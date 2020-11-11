@@ -19,6 +19,8 @@
  * limitations under the License.
  */
 
+
+#include "swd_host.h"
 #include "target_family.h"
 #include "target_board.h"
 
@@ -33,5 +35,5 @@ const board_info_t g_board_info = {
     .daplink_drive_name =       "PIC32CXMTG",
     .daplink_target_url = "https://os.mbed.com/platforms/PIC32CXMTG-EK/",
     .target_cfg = &target_device,
-	.soft_reset_type = SYSRESETREQ,
+    .soft_reset_type = SYSRESETREQ,
 };
